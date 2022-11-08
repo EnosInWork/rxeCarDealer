@@ -172,36 +172,36 @@ ESX.RegisterServerCallback('enos_concess:verifsousconcess', function(source, cb,
     end)
 end)
 
-RegisterServerEvent('fConcess:Ouvert')
-AddEventHandler('fConcess:Ouvert', function()
+RegisterServerEvent('eConcess:Ouvert')
+AddEventHandler('eConcess:Ouvert', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local xPlayers	= ESX.GetPlayers()
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', 'Le Concessionnaire est désormais ~g~Ouvert~s~ !', 'CHAR_FCONCESS', 8)
+		TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', 'Le Concessionnaire est désormais ~g~Ouvert~s~ !', 'CHAR_BIKESITE', 8)
 	end
 end)
 
-RegisterServerEvent('fConcess:Fermer')
-AddEventHandler('fConcess:Fermer', function()
+RegisterServerEvent('eConcess:Fermer')
+AddEventHandler('eConcess:Fermer', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local xPlayers	= ESX.GetPlayers()
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', 'Le Concessionnaire est désormais ~r~Fermer~s~ !', 'CHAR_FCONCESS', 8)
+		TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', 'Le Concessionnaire est désormais ~r~Fermer~s~ !', 'CHAR_BIKESITE', 8)
 	end
 end)
 
-RegisterServerEvent('fConcess:Perso')
-AddEventHandler('fConcess:Perso', function(msg)
+RegisterServerEvent('eConcess:Perso')
+AddEventHandler('eConcess:Perso', function(msg)
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
     local xPlayers    = ESX.GetPlayers()
     for i=1, #xPlayers, 1 do
         local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-        TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', msg, 'CHAR_FCONCESS', 8)
+        TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Concessionnaire', '~b~Annonce', msg, 'CHAR_BIKESITE', 8)
     end
 end)
 
@@ -218,7 +218,7 @@ function sendToDiscordWithSpecialURL (name,message,color,url)
 		}
 	}
     if message == nil or message == '' then return FALSE end
-    PerformHttpRequest(Concess.webhooks, function(err, text, headers) end, 'POST', json.encode({ username = "Fataliste RP",embeds = embeds}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(Concess.webhooks, function(err, text, headers) end, 'POST', json.encode({ username = "eConcess",embeds = embeds}), { ['Content-Type'] = 'application/json' })
 end
 
 
@@ -295,8 +295,8 @@ MySQL.Async.execute(
 
 		},
 		function(result)
-			    TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, 'Clef', 'Concessionnaire', "Vous avez un nouvelle pair de clés !", 'CHAR_FCONCESS', 2)
-			    TriggerClientEvent('esx:showAdvancedNotification', _source, 'Clef', 'Concessionnaire', "Clés bien enregistrer ! ", 'CHAR_FCONCESS', 2)
+			    TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, 'Clef', 'Concessionnaire', "Vous avez un nouvelle pair de clés !", 'CHAR_BIKESITE', 2)
+			    TriggerClientEvent('esx:showAdvancedNotification', _source, 'Clef', 'Concessionnaire', "Clés bien enregistrer ! ", 'CHAR_BIKESITE', 2)
 		end)
 
 end)

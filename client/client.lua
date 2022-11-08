@@ -108,14 +108,14 @@ function MenuF6Concess()
 
                 RageUI.ButtonWithStyle("Annonces d'ouverture",nil, {RightLabel = "→"}, not cooldown, function(Hovered, Active, Selected)
                     if Selected then       
-                        TriggerServerEvent('fConcess:Ouvert')
+                        TriggerServerEvent('eConcess:Ouvert')
                         cooldowncool(1200)
                     end
                 end)
         
                 RageUI.ButtonWithStyle("Annonces de fermeture",nil, {RightLabel = "→"},  not cooldown, function(Hovered, Active, Selected)
                     if Selected then      
-                        TriggerServerEvent('fConcess:Fermer')
+                        TriggerServerEvent('eConcess:Fermer')
                         cooldowncool(1200)
                     end
                 end)
@@ -123,7 +123,7 @@ function MenuF6Concess()
                 RageUI.ButtonWithStyle("Personnalisé", nil, {RightLabel = nil},  not cooldown, function(Hovered, Active, Selected)
                     if (Selected) then
                         local msg = KeyboardInput("Message", "", 100)
-                        TriggerServerEvent('fConcess:Perso', msg)
+                        TriggerServerEvent('eConcess:Perso', msg)
                         cooldowncool(1200)
                     end
                 end)

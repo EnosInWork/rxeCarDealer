@@ -40,23 +40,29 @@ ESX.RegisterServerCallback('enos_concess:getPlayerInventory', function(source, c
 	cb({items = items})
 end)
 
+
 RegisterNetEvent('enos_concess:putStockItems')
 AddEventHandler('enos_concess:putStockItems', function(itemName, count)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	local sourceItem = xPlayer.getInventoryItem(itemName)
 
-	TriggerEvent('esx_addoninventory:getSharedInventory', 'society_cardealer', function(inventory)
-		local inventoryItem = inventory.getItem(itemName)
+  local xPlayer = ESX.GetPlayerFromId(source)
 
-		-- does the player have enough of the item?
-		if sourceItem.count >= count and count > 0 then
-			xPlayer.removeInventoryItem(itemName, count)
-			inventory.addItem(itemName, count)
-			xPlayer.showNotification(_U('have_deposited', count, inventoryItem.name))
-		else
-			TriggerClientEvent('esx:showNotification', _source, "Quantité invalide")
-		end
-	end)
+  TriggerEvent('esx_addoninventory:getSharedInventory', 'society_mecano', function(inventory)
+
+    local item = inventory.getItem(itemName)
+    local playerItemCount = xPlayer.getInventoryItem(itemName).count
+
+    if item.count >= 0 and count <= playerItemCount then
+      xPlayer.removeInventoryItem(itemName, count)
+      inventory.addItem(itemName, count)
+    else
+TriggerClientEvent('esx:showNotification', _source, 'Quantité invalide')
+    end
+
+TriggerClientEvent('esx:showNotification', _source, 'Objet Deposer', count, item.label)
+
+
+  end)
+
 end)
 
 ESX.RegisterServerCallback('enos_concess:recuperercategorievehicule', function(source, cb)

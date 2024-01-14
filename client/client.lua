@@ -245,7 +245,7 @@ function ConcessDeposerobjet()
                                             if Selected then
                                             local count = KeyboardInput("Combien ?", '' , 8)
                                             TriggerServerEvent('enos_concess:putStockItems', item.name, tonumber(count))
-                                            BDeposerobjet()
+                                            ConcessDeposerobjet()
                                         end
                                     end)
                                 end
